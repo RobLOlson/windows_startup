@@ -3,26 +3,31 @@
 #SingleInstance force
 SendMode Input
 
-#IfWinActive ahk_exe sublime_text.exe
-    Alt::
-    KeyWait, Alt
-    return
+Capslock::Send, {Enter}
+^Capslock::Send, ^{Enter}
 
-    LAlt Up::
-    if (A_PriorKey = "Alt")
-        return
-    return
+; Not sure what these are supposed to do :\
+; #IfWinActive ahk_exe sublime_text.exe
+;     Alt::
+;     KeyWait, Alt
+;     return
 
-#IfWinActive ahk_exe chrome.exe
-    Alt::
-    KeyWait, Alt
-    return
+;     LAlt Up::
+;     if (A_PriorKey = "Alt")
+;         return
+;     return
 
-    LAlt Up::
-    if (A_PriorKey = "Alt")
-        return
-    return
+; #IfWinActive ahk_exe chrome.exe
+;     Alt::
+;     KeyWait, Alt
+;     return
 
+
+
+;     LAlt Up::
+;     if (A_PriorKey = "Alt")
+;         return
+;     return
 
 #IfWinActive ;ahk_exe sublime_text.exe
 
