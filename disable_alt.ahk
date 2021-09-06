@@ -1,10 +1,9 @@
 ;Robert Olson
 #NoEnv
 #SingleInstance force
-SendMode Input
 
-Capslock::Send, {Enter}
-^Capslock::Send, ^{Enter}
+; Not sure what this does, but it was causing problems with Brood Wars
+SendMode Input
 
 ; Not sure what these are supposed to do :\
 ; #IfWinActive ahk_exe sublime_text.exe
@@ -29,7 +28,7 @@ Capslock::Send, {Enter}
 ;         return
 ;     return
 
-#IfWinActive ;ahk_exe sublime_text.exe
+; #IfWinNotActive Brood War
 
     ; j::
     ; s::
@@ -78,6 +77,8 @@ Capslock::Send, {Enter}
 
     Alt & d::MoveCursor("{RIGHT}")
     Alt & l::MoveCursor("{RIGHT}")
+
+; #IfWinNotActive
 
     ; !j::
     ; !s::
@@ -158,3 +159,33 @@ Capslock::Send, {Enter}
     ; !^+d::
     ; Send, +^{right}
     ; return
+
+#IfWinActive Brood War
+
+    ; a::Send,{left}
+    ; s::Send,{down}
+    ; w::Send,{up}
+    ; d::Send,{right}
+    ; return
+    w::
+        send {blind}{up down}
+        ; keywait w
+    return
+    a::
+        send {blind}{left down}
+        ; keywait a
+    return
+    s::
+        send {blind}{down down}
+        ; keywait s
+    return
+    d::
+        send {blind}{right down}
+        ; keywait d
+    return
+
+    w up::send {blind}{up up}
+    a up::send {blind}{left up}
+    s up::send {blind}{down up}
+    d up::send {blind}{right up}
+#IfWinActive
